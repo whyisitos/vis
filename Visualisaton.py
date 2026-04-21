@@ -88,7 +88,7 @@ st.write("Ця візуалізація демонструє, як за оста
 
 # Графік відношення до населення
 st.subheader("Відношення мігрантів до населення")
-dw_chart("https://datawrapper.dwcdn.net/pRxv4/2/", height=400)
+dw_chart("https://datawrapper.dwcdn.net/pRxv4/2/", height=300)
 st.write("Цей графік відображає частку мігрантів у загальній структурі населення кожного регіону.")
 
 # 6. Футер
