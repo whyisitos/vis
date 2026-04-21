@@ -9,7 +9,7 @@ st.markdown("""
     <style>
     /* Збільшуємо шрифт назв регіонів у вкладках */
     button[data-baseweb="tab"] p {
-        font-size: 24px !important;
+        font-size: 18px !important;
         font-weight: 600 !important;
         transition: all 0.3s ease;
     }
@@ -119,7 +119,7 @@ st.header("Аналітика та динаміка")
 dw_chart("https://datawrapper.dwcdn.net/BmtjW/1/", height=550)
 display_big_text("Ця візуалізація демонструє зміну частки мігрантів у світі протягом років.")
 
-dw_chart("https://datawrapper.dwcdn.net/pRxv4/2/", height=400)
+dw_chart("https://datawrapper.dwcdn.net/pRxv4/2/", height=250)
 display_big_text("Графік відображає частку мігрантів у загальній структурі населення кожного регіону.")
 
 # 6. Футер
