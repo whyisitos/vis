@@ -4,11 +4,19 @@ import streamlit.components.v1 as components
 # 1. Налаштування сторінки
 st.set_page_config(page_title="Міграційні тенденції", layout="wide")
 
-# Функція для вставки iframe
-def dw_chart(url, height=600):
+# Оновлена функція для вставки iframe з універсальною висотою
+def dw_chart(url, height=750):
     components.html(
-        f'<iframe src="{url}" scrolling="no" frameborder="0" style="border: none; width: 100%;" height="{height}"></iframe>',
-        height=height
+        f"""
+        <div style="padding: 10px;">
+            <iframe src="{url}" 
+                    scrolling="no" 
+                    frameborder="0" 
+                    style="border: none; width: 100%; height: {height}px;">
+            </iframe>
+        </div>
+        """,
+        height=height + 50
     )
 
 # 2. Головний заголовок
@@ -21,12 +29,13 @@ st.markdown("""
 
 # 3. Блок 1: Світова карта
 st.header("Зосередження мігрантів у світі")
-col_map1, col_txt1 = st.columns([2, 1])
+col_map1, col_txt1 = st.columns([1.8, 1])
 
 with col_map1:
-    dw_chart("https://datawrapper.dwcdn.net/V5G9Z/1/", height=660)
+    dw_chart("https://datawrapper.dwcdn.net/V5G9Z/1/", height=700)
 
 with col_txt1:
+    st.write("##") # Відступ зверху
     st.write("""
     Карта демонструє розподіл міжнародних мігрантів за основними регіонами світу. 
     Найбільша концентрація спостерігається в Європі та Азії. Це пов'язано з високим рівнем економічного розвитку, 
@@ -59,27 +68,28 @@ tabs = st.tabs(regions)
 
 for i in range(len(regions)):
     with tabs[i]:
-        c1, c2 = st.columns([1.5, 1])
+        c1, c2 = st.columns([1.8, 1])
         with c1:
-            dw_chart(urls[i], height=650)
+            dw_chart(urls[i], height=750) # Збільшена висота для всіх регіонів
         with c2:
+            st.write("##") # Відступ зверху
             st.subheader(f"Особливості регіону: {regions[i]}")
-            st.write(texts[i])
+            st.info(texts[i])
 
 st.divider()
 
-# 5. Блок 3: Динаміка по роках та відношення до населення
+# 5. Блок 3: Аналітика та динаміка
 st.header("Аналітика та динаміка")
 
 # Графік по роках
 st.subheader("Зміна міграції протягом років")
 dw_chart("https://datawrapper.dwcdn.net/BmtjW/1/", height=550)
-st.write("Ця візуалізація демонструє, як за останні десятиліття частка мігрантів у різних частинах світу перерозподілялася. Ми бачимо, що попри глобальні кризи, загальна кількість людей, які живуть поза межами своєї батьківщини, невпинно зростає, що є наслідком посилення глобалізації")
+st.write("Ця візуалізація демонструє, як за останні десятиліття частка мігрантів у різних частинах світу перерозподілялася.")
 
 # Графік відношення до населення
 st.subheader("Відношення мігрантів до населення")
-dw_chart("https://datawrapper.dwcdn.net/pRxv4/2/", height=350)
-st.write("Цей графік є критично важливим для розуміння «демографічного тиску». Наприклад, висока частка мігрантів в Океанії свідчить про успішну політику залучення фахівців, тоді як низькі показники в деяких азійських країнах говорять про закритість ринку праці або велику чисельність корінного населення")
+dw_chart("https://datawrapper.dwcdn.net/pRxv4/2/", height=400)
+st.write("Цей графік відображає частку мігрантів у загальній структурі населення кожного регіону.")
 
 # 6. Футер
 st.info("Практична робота з візуалізації даних. Виконано за допомогою Python та Datawrapper.")
