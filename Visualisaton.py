@@ -71,7 +71,7 @@ st.header("Зосередження мігрантів у світі")
 col_map1, col_txt1 = st.columns([1.8, 1])
 
 with col_map1:
-    dw_chart("https://datawrapper.dwcdn.net/V5G9Z/1/", height=700)
+    dw_chart("https://datawrapper.dwcdn.net/V5G9Z/1/", height=500)
 
 with col_txt1:
     st.write("##")
